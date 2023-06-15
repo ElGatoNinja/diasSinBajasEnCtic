@@ -3,6 +3,7 @@ import { Component, createSignal } from 'solid-js';
 const App: Component = () => {
   const leaves = [
     {name: "Lydia", date: "2023-04-27"},
+    {name: "Alejandro", date: "2023-5-30"},
     // {name: "Pablo", date: "2023-06-1"},
     // {name: "Sergio", date: "2023-06-1"},
   ]
@@ -35,7 +36,7 @@ const App: Component = () => {
           <strong>{count()}</strong>
         </main>
         {leaves.reverse().map((leave,index) => (
-          <p class="text-3xl" style={{opacity: 1/(index + 1)}}>
+          <p class="text:xl xl:text-3xl" style={{opacity: 1/(index + 1)}}>
             Te echaremos de menos <strong>{leave.name}</strong>
           </p>
         ))}
