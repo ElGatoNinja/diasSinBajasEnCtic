@@ -4,9 +4,11 @@ const App: Component = () => {
   const leaves = [
     {name: "Lydia", date: "2023-04-27"},
     {name: "Alejandro", date: "2023-5-30"},
-    // {name: "Pablo", date: "2023-06-1"},
+    {name: "Pablo", date: "2023-06-27"},
     // {name: "Sergio", date: "2023-06-1"},
   ]
+  const images = Object.values(import.meta.glob('./assets/*', { eager: true, as: 'url' }))
+  console.log(images)
   const name = leaves[leaves.length - 1].name;
   const lastLeave = new Date(leaves[leaves.length - 1].date)
 
@@ -28,7 +30,8 @@ const App: Component = () => {
   counterEffect()
 
   return (
-    <div class="bg-slate-900 h-screen w-screen p-10 xl:p-60 text-yellow-100 text-center font-mono">
+    <>
+      <div class="bg-slate-900 h-screen w-screen p-10 xl:p-60 text-yellow-100 text-center font-mono">
         <h1 class="text-3xl xl:text-7xl">
           Días sin bajas en <span class="text-orange-600">CTIC</span>
         </h1>
@@ -40,8 +43,11 @@ const App: Component = () => {
             Te echaremos de menos <strong>{leave.name}</strong>
           </p>
         ))}
-        
-    </div>
+        </div>
+        <div class="fixed bottom-48 grid grid-cols-12 portrait:grid-cols-6 m-20 sepia">
+          {leaves.map((person,i) => <img src={images[i%images.length]} width="256" height="256"/>)}
+        </div>
+    </>
   );
 };
 
