@@ -2,14 +2,15 @@ import { Component, createSignal } from 'solid-js';
 
 const App: Component = () => {
   const leaves = [
-    {name: "Lydia", date: "2023-04-27"},
-    {name: "Alejandro", date: "2023-5-30"},
-    {name: "Pablo", date: "2023-06-27"},
-    // {name: "Sergio", date: "2023-06-1"},
+    {title: "Lydia", date: "2023-04-27", memorial:"Aquí yace LydIA\n DEP"},
+    {title: "Alejandro", date: "2023-5-30", memorial:"Esta en un lugar mejor, el infierno de la administración"},
+    {title: "Pablo", date: "2023-06-27", memorial:"Desaparecido en combate, o en el gym"},
+    {title: "Aitor", date:"2023-07-9", memorial:"El Breve\nPasó menos tiempo en CTIC que algunos clientes"},
+    //{title: "Sergio", date: "2023-07-14"},
   ]
   const images = Object.values(import.meta.glob('./assets/*', { eager: true, as: 'url' }))
   console.log(images)
-  const name = leaves[leaves.length - 1].name;
+  const name = leaves[leaves.length - 1].title;
   const lastLeave = new Date(leaves[leaves.length - 1].date)
 
   const currDate = new Date();
@@ -18,7 +19,7 @@ const App: Component = () => {
   const [count, setCount] = createSignal(0);
 
   function counterEffect() {
-    const delay =  Math.floor(1000-1000*(Math.E**(-count()*Math.PI/(differenceInDays**1.7))))
+    const delay = Math.floor(1000-1000*(Math.E**(-count()*Math.PI/(differenceInDays**1.7))))
     setTimeout(() => {
       setCount(count() + 1)
       if(count() < differenceInDays) {
@@ -40,12 +41,20 @@ const App: Component = () => {
         </main>
         {leaves.reverse().map((leave,index) => (
           <p class="text:xl xl:text-3xl" style={{opacity: 1/(index + 1)}}>
-            Te echaremos de menos <strong>{leave.name}</strong>
+            Te echaremos de menos <strong>{leave.title}</strong>
           </p>
         ))}
         </div>
         <div class="fixed bottom-48 grid grid-cols-12 portrait:grid-cols-6 m-20 sepia">
-          {leaves.map((person,i) => <img src={images[i%images.length]} width="256" height="256"/>)}
+          {leaves.reverse().map((person,i) => (
+            <div class="group relative cursor-pointer py-2">
+              <div role="tooltip" class="absolute invisible group-hover:visible w-full text-center border-4 bg-slate-600 text-white px-4 mb-3 py-2 text-sm rounded-md">
+                <h6 class="text-lg font-bold">{person.title}</h6>
+                <p class="whitespace-pre-line">{person.memorial}</p>
+              </div>
+              <img src={images[i%images.length]} width="256" height="256"/>
+            </div>
+          ))}
         </div>
     </>
   );
