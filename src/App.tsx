@@ -48,7 +48,7 @@ const App: Component = () => {
         <div class="fixed bottom-48 grid grid-cols-12 portrait:grid-cols-6 m-20 sepia">
           {leaves.reverse().map((person,i) => (
             <div class="group relative cursor-pointer py-2">
-              <div role="tooltip" class="absolute invisible group-hover:visible w-full text-center border-4 bg-slate-600 text-white px-4 mb-3 py-2 text-sm rounded-md">
+              <div role="tooltip" class="absolute portrait:fixed portrait:bottom-28 portrait:left-1/2 portrait:transform portrait:-translate-x-1/2 left invisible group-hover:visible w-full text-center border-4 bg-slate-600 text-white px-4 mb-3 py-2 text-sm rounded-md">
                 <h6 class="text-lg font-bold">{person.title}</h6>
                 <p class="whitespace-pre-line">{person.memorial}</p>
               </div>
