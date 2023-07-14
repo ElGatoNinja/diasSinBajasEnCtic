@@ -6,7 +6,7 @@ const App: Component = () => {
     {title: "Alejandro", date: "2023-5-30", memorial:"Esta en un lugar mejor, el infierno de la administración"},
     {title: "Pablo", date: "2023-06-27", memorial:"Desaparecido en combate, o en el gym"},
     {title: "Aitor", date:"2023-07-9", memorial:"El Breve\nPasó menos tiempo en CTIC que algunos clientes"},
-    //{title: "Sergio", date: "2023-07-14"},
+    {title: "Sergio", date: "2023-07-14", memorial:"🐬'); DROP TABLE memorials;--🐬"},
   ]
   const images = Object.values(import.meta.glob('./assets/*', { eager: true, as: 'url' }))
   console.log(images)
