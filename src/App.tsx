@@ -1,12 +1,15 @@
 import { Component, createSignal } from 'solid-js';
 
 const App: Component = () => {
+
   const leaves = [
     {title: "Lydia", date: "2023-04-27", memorial:"Aquí yace LydIA\n DEP"},
     {title: "Alejandro", date: "2023-5-30", memorial:"Esta en un lugar mejor, el infierno de la administración"},
     {title: "Pablo", date: "2023-06-27", memorial:"Desaparecido en combate, o en el gym"},
     {title: "Aitor", date:"2023-07-9", memorial:"El Breve\nPasó menos tiempo en CTIC que algunos clientes"},
     {title: "Sergio", date: "2023-07-14", memorial:"🐬'); DROP TABLE memorials;--🐬"},
+    {title: "Dani Pacho", date:"2024-01-5", memorial:"Se quedó sin cesta por unos días"},
+    {title: "Salvador Nasser", date:"2024-02-2", memorial:"Murió de ascenso.", grave:"grave_nasser.png"}
   ]
   const images = Object.values(import.meta.glob('./assets/*', { eager: true, as: 'url' }))
   console.log(images)
@@ -52,7 +55,7 @@ const App: Component = () => {
                 <h6 class="text-lg font-bold">{person.title}</h6>
                 <p class="whitespace-pre-line">{person.memorial}</p>
               </div>
-              <img src={images[i%images.length]} width="256" height="256"/>
+              <img src={ person.grave ? "/src/assets/custom_graves/"+person.grave : images[i%images.length]} width="256" height="256"/>
             </div>
           ))}
         </div>
