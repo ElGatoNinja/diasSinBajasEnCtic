@@ -42,22 +42,26 @@ const App: Component = () => {
         <main class="text-8xl xl:text-[20rem]">
           <strong>{count()}</strong>
         </main>
-        {leaves.reverse().map((leave,index) => (
-          <p class="text:xl xl:text-3xl" style={{opacity: 1/(index + 1)}}>
-            Te echaremos de menos <strong>{leave.title}</strong>
-          </p>
-        ))}
-        </div>
-        <div class="fixed bottom-48 grid grid-cols-12 portrait:grid-cols-6 m-20 sepia">
-          {leaves.reverse().map((person,i) => (
-            <div class="group relative cursor-pointer py-2">
-              <div role="tooltip" class="absolute portrait:fixed portrait:bottom-28 portrait:left-1/2 portrait:transform portrait:-translate-x-1/2 left invisible group-hover:visible w-full text-center border-4 bg-slate-600 text-white px-4 mb-3 py-2 text-sm rounded-md">
-                <h6 class="text-lg font-bold">{person.title}</h6>
-                <p class="whitespace-pre-line">{person.memorial}</p>
-              </div>
-              <img src={ person.grave ? "/src/assets/custom_graves/"+person.grave : images[i%images.length]} width="256" height="256"/>
-            </div>
+        <div class="grid landscape:grid-cols-2 portrait:grid-rows-2">
+          <div>
+          {leaves.reverse().map((leave,index) => (
+            <p class="text:xl xl:text-3xl" style={{opacity: 1/(index + 1)}}>
+              Te echaremos de menos <strong>{leave.title}</strong>
+            </p>
           ))}
+          </div>
+          <div class="grid grid-cols-6 sepia">
+            {leaves.reverse().map((person,i) => (
+              <div class="group relative cursor-pointer py-2">
+                <div role="tooltip" class="absolute portrait:fixed portrait:-bottom-28 portrait:left-1/2 portrait:transform portrait:-translate-x-1/2 left invisible group-hover:visible w-full text-center border-4 bg-slate-600 text-white px-4 mb-3 py-2 text-sm rounded-md">
+                  <h6 class="text-lg font-bold">{person.title}</h6>
+                  <p class="whitespace-pre-line">{person.memorial}</p>
+                </div>
+                <img src={ person.grave ? "/src/assets/custom_graves/"+person.grave : images[i%images.length]} width="256" height="256"/>
+              </div>
+            ))}
+          </div>
+          </div>
         </div>
     </>
   );
