@@ -12,7 +12,9 @@ const App: Component = () => {
     {title: "Salvador Nasser", date:"2024-02-2", memorial:"Murió de ascenso.", grave:"grave_nasser.png"}
   ]
   const images = Object.values(import.meta.glob('./assets/*', { eager: true, as: 'url' }))
-  console.log(images)
+  const custom_graves = import.meta.glob('./assets/custom_graves/*', { eager: true, as: 'url' });
+  console.log(custom_graves);
+
   const name = leaves[leaves.length - 1].title;
   const lastLeave = new Date(leaves[leaves.length - 1].date)
 
@@ -57,7 +59,7 @@ const App: Component = () => {
                   <h6 class="text-lg font-bold">{person.title}</h6>
                   <p class="whitespace-pre-line">{person.memorial}</p>
                 </div>
-                <img src={ person.grave ? "/src/assets/custom_graves/"+person.grave : images[i%images.length]} width="256" height="256"/>
+                <img src={ person.grave ? custom_graves[`./assets/custom_graves/${person.grave}`] : images[i%images.length]} width="256" height="256"/>
               </div>
             ))}
           </div>
