@@ -8,6 +8,8 @@ const App: Component = () => {
     {title: "Pablo", date: "2023-06-27", memorial:"Desaparecido en combate, o en el gym"},
     {title: "Aitor", date:"2023-07-9", memorial:"El Breve\nPasó menos tiempo en CTIC que algunos clientes"},
     {title: "Sergio", date: "2023-07-14", memorial:"🐬'); DROP TABLE memorials;--🐬"},
+    {title: "Santi", date: "2023-10-8", memorial:"Se gastó la indemnización en polos de la Ibense"},
+    {title: "Berguño", date: "2023-10-16", memorial:"Le atropelló SVMAC"},
     {title: "Dani Pacho", date:"2024-01-5", memorial:"Se quedó sin cesta por unos días"},
     {title: "Salvador Nasser", date:"2024-02-2", memorial:"Murió de ascenso.", grave:"grave_nasser.png"}
   ]
